@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    show-sql: true
+server:
+  servlet:
+    context-path: /demoapi
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+  endpoints:
+    web:
+      exposure:
+        include:
+          - all
+
+springdoc:
+  swagger-ui:
+    path: /openapi
