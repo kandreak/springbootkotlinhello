@@ -9,7 +9,7 @@ class MessageController(val messageService: MessageService) {
     fun findAll() = messageService.findMessages()
 
     @GetMapping("/{id}")
-    fun findOne(@PathVariable id: Long) = messageService.findMessage(id)
+    fun findOne(@PathVariable id: String) = messageService.findMessage(id)
 
     @PostMapping("/")
     fun post(@RequestBody message: Message) {
@@ -23,7 +23,7 @@ class MessageController(val messageService: MessageService) {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: Long) {
+    fun delete(@PathVariable id: String) {
         messageService.delete(id)
     }
 }

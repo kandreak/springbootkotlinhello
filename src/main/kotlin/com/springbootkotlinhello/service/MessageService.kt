@@ -10,11 +10,11 @@ class MessageService(val db: MessageRepository) {
     fun findMessages(): List<Message> = db.findAll().toList()
 
     @OptIn(ExperimentalStdlibApi::class)
-    fun findMessage(id: Long): List<Message> = db.findById(id).toList()
+    fun findMessage(id: String): List<Message> = db.findById(id).toList()
 
     fun save(message: Message) {
         db.save(message)
     }
 
-    fun delete(id: Long) = db.deleteById(id)
+    fun delete(id: String) = db.deleteById(id)
 }
