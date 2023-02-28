@@ -1,7 +1,8 @@
-package com.springbootkotlinhello.controllers
+package com.springbootkotlinhello.controller
 
-import com.springbootkotlinhello.models.Message
-import com.springbootkotlinhello.repos.MessageRepository
+import com.springbootkotlinhello.controller.exception.InvalidSignatureException
+import com.springbootkotlinhello.model.Message
+import com.springbootkotlinhello.repository.MessageRepository
 import org.springframework.data.repository.findByIdOrNull
 //import com.springbootkotlinhello.services.MessageService
 import org.springframework.web.bind.annotation.*
@@ -16,6 +17,7 @@ class MessageController(private val repository: MessageRepository) {
 
     @PostMapping("/")
     fun post(@RequestBody message: Message) {
+        if(message.text == "ex") throw InvalidSignatureException()
         repository.save(message)
     }
 
