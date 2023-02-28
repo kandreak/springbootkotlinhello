@@ -17,8 +17,8 @@ class MessageController(val messageService: MessageService) {
     }
 
     @PatchMapping("/")
-    //TODO: error if not find
     fun patch(@RequestBody message: Message) {
+        if(messageService.findMessage(message.id).isEmpty()) throw Exception("message with id " + message.id + " not found (hint: use POST method)")
         messageService.save(message)
     }
 
